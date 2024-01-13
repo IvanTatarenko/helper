@@ -1,4 +1,5 @@
 import os
+from typing import List
 from src.services.logger.logger_service import LoggerService
 
 class FolderService:
@@ -52,3 +53,16 @@ class FolderService:
     """Створення базового набору папок"""
     self.create_folder_for_export('images/800px')
     self.create_folder_for_import('images')
+
+  def get_all_file_paths(self, directory_path: str) -> List[str]:
+    """ Отримати всі шляхи файлів у вказаній папці """
+    file_paths = []
+    try:
+      for root, dirs, files in os.walk(directory_path):
+        for file in files:
+          file_path = os.path.join(root, file)
+          file_paths.append(file_path)
+      return file_paths
+    except Exception as err:
+      self.logger.err(f'Помилка отримання шляхів файлів в папці - {directory_path}:')
+      self.logger.err(err)
