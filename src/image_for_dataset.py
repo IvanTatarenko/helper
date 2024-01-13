@@ -1,5 +1,5 @@
-from module.folder.folder_service import FolderService
-from module.logger.logger_service import LoggerService
+from services.folder.folder_service import FolderService
+from services.logger.logger_service import LoggerService
 
 logger = LoggerService('ImageForDatasetFile')
 logger.success('Запуск підготовки зображень для датасету')
