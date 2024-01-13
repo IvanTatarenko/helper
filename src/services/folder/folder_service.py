@@ -1,5 +1,5 @@
 import os
-from services.logger.logger_service import LoggerService
+from src.services.logger.logger_service import LoggerService
 
 class FolderService:
   def __init__(self):
