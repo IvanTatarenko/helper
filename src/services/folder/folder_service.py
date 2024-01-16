@@ -66,3 +66,12 @@ class FolderService:
     except Exception as err:
       self.logger.err(f'Помилка отримання шляхів файлів в папці - {directory_path}:')
       self.logger.err(err)
+
+  def filter_files_path_by_extension(self, file_paths, extension):
+    """
+    Фільтрує список шляхів файлів, залишаючи тільки ті, що мають вказане розширення.
+    :param file_paths: Список шляхів до файлів
+    :param extension: Розширення файлів, яке потрібно фільтрувати
+    :return: Фільтрований список шляхів
+    """
+    return [path for path in file_paths if path.endswith(extension)]

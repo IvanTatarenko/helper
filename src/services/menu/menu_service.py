@@ -1,18 +1,19 @@
 import inquirer
 from src.services.resize_image.resize_image_service import ResizeImageService
+from src.services.xml.xml_service import XMLService
 
 class Menu:
   def __init__(self):
     self.running = True
     self.resize_image = ResizeImageService()
+    self.xml_service = XMLService()
     self.menu_structure = {
       'Зміна розміру зображень': {
       'Ширина 800px': lambda: self.resize_image.height_800(),
       'Назад': None
       },
-      'Підменю 2': {
-      'Опція 2.1': lambda: print("Ви вибрали Опцію 2.1"),
-      'Опція 2.2': lambda: print("Ви вибрали Опцію 2.2"),
+      'XML для ML': {
+      'Зробити вибірку назв та id лейблів': lambda: self.xml_service.parsing_name_and_id_lables_and_change_it(),
       'Назад': None
       },
       'Вихід': None
